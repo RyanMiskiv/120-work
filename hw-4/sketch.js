@@ -117,7 +117,10 @@ function draw(){
      // **TEETH**
      push();
      // TEETH code goes here
+     //each tooth spans 55 pixels starting from left to right
      triangle(-250,100,-222.5,50,-195,100);
+     triangle(-195,100,-167.5,50,-140,100);
+     triangle(-140,100,-112.5,50,-85,100);
      pop();
      // **END TEETH**
 
