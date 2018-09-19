@@ -5,43 +5,82 @@ Week 4 Homework: Portrait
 */
 function setup(){
   //setting up canvas for drawing
-  createCanvas(800,800);
+  createCanvas(600,800);
 
-  background(100);
+  // background(50);
 
 }
 
 function draw(){
   //Set origin to center of canvas
-  translate(400,400);
+  translate(300,400);
+
+  // //making axes to help work with
+  line(-300,0,300,0);
+  line(0,400,0,-400);
+
   // *****************************************************
      // create a sandbox for the entire character
   push();
 
 
-     // ** BODY **********************************
+     // ** FACE **********************************
      push();
      // body code goes here
+     //Nose Code, lines
+     strokeWeight(2);
+     line(20,0,0,-50);
+     line(-20,0,0,-50);
+     line(20,0,0,20);
+     line(-20,0,0,20);
 
+     //accenting lines
+     strokeWeight(1);
+     line(0,-50,0,20);
+     line(-20,0,0,-10);
+     line(20,0,0,-10);
      pop();
-     // **END BODY**
+     // **END NOSE**
 
 
-     // ** ARMS **********************************
+     // ** EYES **********************************
      push();
-     // arms code goes here
+
+     //eyes
+     fill(0);
+     ellipse(100,-80,80);
+     ellipse(-100,-80,80);
+     //pupils
+     noStroke();
+     fill('rgb(167, 27, 18)');
+     ellipse(100,-80,25);
+     ellipse(-100,-80,25);
 
      pop();
-     // **END ARMS**
+     // **END EYES**
 
 
      // ** HEAD **********************************
      push();
 
-     // head code goes here
-     // make skull first
+     //lines on the side of his mask
+     line(-225,-60,-225,-175);
+     line(225,-60,225,-175);
+
+     //TODO: ARC ON THE TOP, LAB?
+     // arc(0,-350,450,30,radians('60'),radians(120));
+
+     //Diagonal Lines going into the jaw
+     line(-225,-60,-190,0);
+     line(225,-60,190,0);
+
+     //Lines into the jaw
+     line()
 
 
+
+
+     pop();
      // **MOUTH**
      push();
      // mouth code goes here
