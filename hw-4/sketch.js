@@ -1,9 +1,7 @@
 /*
 Ryan Miskiv
 Creative Coding 1
-Week 4 Homework: Monster
-
-I will be creating a robotic monster portrait.
+Week 4 Homework: Portrait
 */
 function setup(){
   //setting up canvas for drawing
