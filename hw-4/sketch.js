@@ -16,8 +16,8 @@ function draw(){
   translate(300,400);
 
   // //making axes to help work with
-  line(-300,0,300,0);
-  line(0,400,0,-400);
+  // line(-300,0,300,0);
+  // line(0,400,0,-400);
 
   // *****************************************************
      // create a sandbox for the entire character
@@ -63,7 +63,8 @@ function draw(){
      // ** HEAD **********************************
      push();
 
-     //lines on the side of his mask
+     //lines on the side of his mask going up
+     strokeWeight(2);
      line(-225,-60,-225,-175);
      line(225,-60,225,-175);
 
@@ -71,11 +72,16 @@ function draw(){
      // arc(0,-350,450,30,radians('60'),radians(120));
 
      //Diagonal Lines going into the jaw
-     line(-225,-60,-190,0);
-     line(225,-60,190,0);
+     push();
+     strokeWeight(1)
+     line(-225,-60,-190,10);
+     line(225,-60,190,10);
+     pop();
 
-     //Lines into the jaw
-     line()
+     //Lines down into the jaw
+     line(-190,10,-190,100);
+     line(190,10,190,100);
+
 
 
 
