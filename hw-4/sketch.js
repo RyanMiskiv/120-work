@@ -17,7 +17,7 @@ function draw(){
   //Set origin to center of canvas
   translate(300,400);
 
-  // //making axes to help work with
+  //making axes to help work with
   // line(-300,0,300,0);
   // line(0,400,0,-400);
 
@@ -58,43 +58,68 @@ function draw(){
      ellipse(100,-80,25);
      ellipse(-100,-80,25);
 
+     push();
+     fill('rgba(167, 27, 18,.4)');
+     ellipse(100,-80,45);
+     ellipse(-100,-80,45);
+     pop();
+
      pop();
      // **END EYES**
 
 
-     // ** HEAD **********************************
-     push();
+  // ** HEAD **********************************
+    push();
 
      //lines on the side of his mask going up
      strokeWeight(2);
-     line(-225,-60,-225,-175);
-     line(225,-60,225,-175);
+     line(-225,-60,-225,-200);
+     line(225,-60,225,-200);
 
-     //TODO: ARC ON THE TOP, LAB?
+     // ARC ON THE TOP
      // arc(0,-350,450,30,radians('60'),radians(120));
+     push();
+      noFill();
+      ellipse(0,-200,450,75);
+     pop();
+
+     push();
+      noStroke();
+      fill(255);
+      rect(-300,-400,600,200);
+     pop();
 
      //Diagonal Lines going into the jaw
      push();
-     strokeWeight(1)
-     line(-225,-60,-190,10);
-     line(225,-60,190,10);
-     pop();
-
-     //Lines down into the jaw
-     line(-190,10,-190,100);
-     line(190,10,190,100);
+       strokeWeight(1);
+       line(-225,-60,-190,10);
+       line(225,-60,190,10);
 
 
+       //Lines down into the jaw
+       line(-190,10,-190,100);
+       line(190,10,190,100);
+
+       //Straight Jaw Lines
+       line(-250,100,-250,220);
+       line(250,100,250,220);
+
+       //Triangular Jaw lines
+       // line(-250,220,0,350);
+       // line(250,220,0,350);
+       fill(255);
+       triangle(-250,220,0,350,250,220);
+      pop();
 
 
 
-     pop();
-     // **MOUTH**
+
+     // **TEETH**
      push();
-     // mouth code goes here
-
+     // TEETH code goes here
+     triangle(-250,100,-222.5,50,-195,100);
      pop();
-     // **END MOUTH**
+     // **END TEETH**
 
      // **EYES**
      push();
