@@ -1,9 +1,11 @@
 function setup() {
     createCanvas( 800, 500 );
-    background( '#e3f9c8' );
+    background( 'rgb(221, 23, 23)' );
 }
 
 function draw() {
+    fill('rgb(15, 207, 195)');
+    noStroke();
     // a rectangle with 10px corners
     rect( 20, 20, 300, 200, 10 );
 
