@@ -8,9 +8,7 @@ I will be creating a robotic monster.
 function setup(){
   //setting up canvas for drawing
   createCanvas(600,800);
-
-  // background(50);
-
+  background(50);
 }
 
 function draw(){
@@ -24,12 +22,28 @@ function draw(){
   // *****************************************************
      // create a sandbox for the entire character
   push();
+    //backgrond accent and coloring
 
+    //head shape
+    push();
+     fill(0);
+     ellipse(0,0,450,500);
+    pop();
+
+    push();
+      //top of the mask filling in
+     noStroke();
+     fill(255);
+     rect(-225,-200,450,140);
+     quad(-225,-60,-190,10,190,10,225,-60);
+     rect(-190,10,380,90);
+
+
+    pop();
 
      // ** FACE **********************************
      push();
-     // body code goes here
-     //Nose Code, lines
+     //Nose
      strokeWeight(2);
      line(20,0,0,-50);
      line(-20,0,0,-50);
@@ -77,16 +91,19 @@ function draw(){
      line(225,-60,225,-200);
 
      // ARC ON THE TOP
-     // arc(0,-350,450,30,radians('60'),radians(120));
      push();
-      noFill();
-      ellipse(0,-200,450,75);
+      // noFill();
+      fill(0);
+      // ellipse(0,-200,450,75);
+      arc(0,-200,450,75,TWO_PI,PI);
+      // arc(0,-200,450,150,PI,TWO_PI);
      pop();
 
      push();
-      noStroke();
-      fill(255);
-      rect(-300,-400,600,200);
+     //masking the arc ellipse
+      // noStroke();
+      // fill(50);
+      // rect(-300,-400,600,200);
      pop();
 
      //Diagonal Lines going into the jaw
@@ -97,8 +114,11 @@ function draw(){
 
 
        //Lines down into the jaw
-       line(-190,10,-190,100);
-       line(190,10,190,100);
+
+        strokeWeight(2);
+        line(-190,10,-190,100);
+        line(190,10,190,100);
+
 
        //Straight Jaw Lines
        line(-250,100,-250,220);
@@ -109,6 +129,15 @@ function draw(){
        // line(250,220,0,350);
        fill(255);
        triangle(-250,220,0,350,250,220);
+
+       // //round head top bit
+       //  push();
+       //  ellipse ()
+       //  pop();
+
+       //Top head strap
+       fill(255);
+       rect(-40,-300,80,125);
       pop();
 
 
@@ -121,13 +150,24 @@ function draw(){
      triangle(-250,100,-222.5,50,-195,100);
      triangle(-195,100,-167.5,50,-140,100);
      triangle(-140,100,-112.5,50,-85,100);
+     triangle(-85,100,-57.5,50,-30,100);
+     triangle(-30,100,-2.5,50,25,100);
+     triangle(25,100,52.5,50,80,100);
+     triangle(80,100,107.5,50,135,100);
+     triangle(135,100,162.5,50,190,100);
+     triangle(190,100,217.5,50,250,100);
      pop();
      // **END TEETH**
 
-     // **EYES**
+     // **ACCENTING DETAILS**
      push();
-     // eye code goes here
-
+     // misc code goes here
+     noStroke();
+     fill(255);
+     rect(-248,99,496,122);
+     // strokeWeight(2);
+     // fill(255);
+     // line(-250,100,250,100);
      pop();
      // **END EYES**
 
