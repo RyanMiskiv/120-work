@@ -29,6 +29,11 @@ function draw(){
      fill(0);
      ellipse(0,0,450,500);
     pop();
+    //Neck
+    push();
+    fill(0);
+    triangle(-210,400,0,-100,210,400);
+    pop();
 
     push();
       //top of the mask filling in
@@ -37,6 +42,7 @@ function draw(){
      rect(-225,-200,450,140);
      quad(-225,-60,-190,10,190,10,225,-60);
      rect(-190,10,380,90);
+
 
 
     pop();
@@ -94,9 +100,9 @@ function draw(){
      push();
       // noFill();
       fill(0);
-      // ellipse(0,-200,450,75);
-      arc(0,-200,450,75,TWO_PI,PI);
-      // arc(0,-200,450,150,PI,TWO_PI);
+      ellipse(0,-200,450,75);
+      // arc(0,-200,450,75,TWO_PI,PI);
+      arc(0,-200,450,150,PI,TWO_PI);
      pop();
 
      push();
