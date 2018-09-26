@@ -8,7 +8,7 @@ I will be creating a robotic monster.
 function setup(){
   //setting up canvas for drawing
   createCanvas(600,800);
-  background(50);
+  background(100);
 }
 
 function draw(){
