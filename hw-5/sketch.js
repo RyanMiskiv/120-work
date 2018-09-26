@@ -3,18 +3,22 @@ Ryan Miskiv
 Creative Coding 1
 Week 5 HW - Animation
 */
+let newCenterX = windowWidth/2;
+let newCenterY = windowHeight/2;
 function setup(){
   createCanvas(windowWidth,windowHeight);
   translate(width/2,height/2);
 
 }
 
+
+
 function draw(){
 
   background('rgb(131, 173, 236)');
-  // textSize(36);
-  // text("Mouse X: " + mouseX, 10, 40);
-  // text("Mouse Y: " + mouseY, 10, 80);
+  textSize(36);
+  text("Mouse X: " + mouseX, 10, 40);
+  text("Mouse Y: " + mouseY, 10, 80);
   //
   //
     // line(width/2,-(height),width/2,height);
