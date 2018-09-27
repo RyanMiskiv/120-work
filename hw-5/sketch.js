@@ -81,8 +81,6 @@ function draw(){
 
 //Main Body
 push();
-// translate(width/2,height/2);
-// rotate(radians(rotateIncrement));
   push();
   noStroke();
   fill('rgb(0, 254, 41)');
@@ -118,6 +116,14 @@ push();
     arc(mouseX + 60, mouseY + 25, 30, 20, TWO_PI, PI);
     pop();
 
+  pop();
+  push();
+  translate(mouseX,mouseY);
+  rotate(radians(rotateIncrement));
+  textAlign(CENTER);
+  textStyle(BOLD);
+  textSize(30);
+  text("Mike Wazowski", mouseX, mouseY - 200);
   pop();
   rotateIncrement += 1;
 }
