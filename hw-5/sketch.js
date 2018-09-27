@@ -7,7 +7,7 @@ function setup(){
   createCanvas(windowWidth,windowHeight);
   translate(width,height);
 }
-
+let rotateIncrement = 1;
 function draw(){
 
   background('rgb(131, 173, 236)');
@@ -45,8 +45,8 @@ function draw(){
       width/2 + 150, height/2 + 150,
       width/2 + 170, height/2 + 150);
   //hands
-  ellipse(width/2 -160,height/2 + 150,22,30);
-  ellipse(width/2 +160,height/2 + 150,22,30);
+  ellipse(width/2 -160,height/2 + 150, 30, 30);
+  ellipse(width/2 +160,height/2 + 150, 30, 30);
   //lower arms
   // rect(width/2 - 170, height/2 + 150,15,75);
   // rect(width/2 + 150, height/2 + 150,15,75);
@@ -80,6 +80,9 @@ function draw(){
   pop();
 
 //Main Body
+push();
+// translate(width/2,height/2);
+// rotate(radians(rotateIncrement));
   push();
   noStroke();
   fill('rgb(0, 254, 41)');
@@ -114,5 +117,7 @@ function draw(){
     arc(mouseX + 30, mouseY + 25, 30, 20, TWO_PI, PI);
     arc(mouseX + 60, mouseY + 25, 30, 20, TWO_PI, PI);
     pop();
+
   pop();
+  rotateIncrement += 1;
 }
