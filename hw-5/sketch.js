@@ -73,7 +73,6 @@ function draw(){
     //lower Legs
     rect(width/2 -100, height/2 + 250, 20, 100);
     rect(width/2 +80, height/2 + 250, 20, 100);
-    //TODO: Feet
 
     //Feet
     ellipse(width/2 -100,height/2 + 350, 45, 20);
