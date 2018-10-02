@@ -12,13 +12,13 @@ tri.point2Y = 0;
 tri.point3X = 0;
 tri.point3Y = 0;
 
-var rectSize
 
 var col = {};
 col.R = 0;
 col.B = 0;
 col.G = 0;
 col.A = 0;
+
 
 
 function setup(){
