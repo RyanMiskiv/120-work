@@ -12,28 +12,21 @@ function setup() {
 
     push();
     fill(0);
-    triangle(-width,-height,width,height,width,-height);
-    // rect(-width,-height,width * 2,height);
+    // triangle(-width,-height,width,height,width,-height);
+    rect(-width,-height,width * 2,height);
     pop();
-
-
-
-
 
     frameRate(24);
 }
 
 function draw() {
   translate(width/2,height/2);
-
+  //constraining to boundaries
   pos.rect_x = constrain(pos.rect_x,-width/2 + 20,width/2 - 20);
   pos.rect_y = constrain(pos.rect_y,-height/2 + 20,height/2 - 20 );
 
   rectMode(RADIUS);
   strokeWeight(5);
-    // noStroke();
-    // ellipse(pos.rect_x, pos.rect_y, rect_width, rect_width);
-
 
     push();
     fill(0);
@@ -50,10 +43,9 @@ function draw() {
     // updating position
 
     pos.rect_x += floor(random(-max_rect_mvt, max_rect_mvt));
-
-
     pos.rect_y += floor(random(-max_rect_mvt, max_rect_mvt));
 
+    //setting boundaries
     if(pos.rect_x < -width){
       pos.rect_x = 0;
     }
@@ -61,14 +53,6 @@ function draw() {
       pos.rect_y = 0;
     }
 
-    // push();
-    // fill(255, 30, 40);
-    // text(pos.rect_x, 20, 20);
-    // pop();
-
-    // if (pos.rect_x < 1) {
-    //   pos.rect_x = pos.rect_x * -1;
-    // }
     map(pos.rect_x,-width -80 ,width + 80,-width + rect_width, width - rect_width);
     map(pos.rect_y,-height -80,height + 80, 0, height - rect_width);
 }
