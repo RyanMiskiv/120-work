@@ -1,9 +1,9 @@
-var ball_x;
-var ball_y;
-var ball_width = 20;
-var max_ball_mvt = 20;
-var xc = ball_X;
-var yc = ball_y;
+var rect = {};
+rect.rect_x;
+rect.rect_y;
+rect.rect_width = 20;
+rect.max_rect_mvt = 20;
+
 function setup() {
     createCanvas( windowWidth, windowHeight );
     // createCanvas( windowWidth, 600 );
@@ -16,8 +16,8 @@ function setup() {
     // rect(-width,-height,width * 2,height);
     pop();
 
-    ball_x = 0;
-    ball_y = 0;
+    rect.rect_x = 0;
+    rect.rect_y = 0;
 
     frameRate(30);
 }
@@ -28,25 +28,31 @@ function draw() {
   rectMode(RADIUS);
   strokeWeight(5);
     // noStroke();
-    // ellipse(ball_x, ball_y, ball_width, ball_width);
+    // ellipse(rect_x, rect_y, rect_width, rect_width);
 
 
     push();
     fill(0);
     stroke(255);
-    rect(ball_x,ball_y,ball_width,ball_width,10);
+    rect(rect.rect_x,rect.rect_y,rect.rect_width,rect.rect_width,10);
     pop();
 
     push();
     fill(255);
     stroke(0);
-    rect(-ball_x,-ball_y,ball_width,ball_width,10);
+    rect(-rect.rect_x,-rect.rect_y,rect.rect_width,rect.rect_width,10);
     pop();
 
     // updating position
-    ball_x += random(-max_ball_mvt, max_ball_mvt);
-    ball_y += random(-max_ball_mvt, max_ball_mvt);
+    // if(-width/2 + 80 < rect.rect_x < width/2 - 80 ){
+    rect.rect_x += random(-rect.max_rect_mvt, rect.max_rect_mvt);
+    // }
 
-    map(ball_x,-width -100 ,width + 100,-width + ball_width, width - ball_width);
-    map(ball_y,-height -100,height + 100, 0, height - ball_width);
+    rect.rect_y += random(-rect.max_rect_mvt, rect.max_rect_mvt);
+
+    // if (rect_X < 1) {
+    //   rect_X = rect_X * -1;
+    // }
+    //map(rect_x,-width -100 ,width + 100,-width + rect_width, width - rect_width);
+    //map(rect_y,-height -100,height + 100, 0, height - rect_width);
 }
