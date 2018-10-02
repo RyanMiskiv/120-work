@@ -20,14 +20,12 @@ function setup() {
 }
 
 function draw() {
-  translate(width/2,height/2);
-  //constraining to boundaries
-  pos.rect_x = constrain(pos.rect_x,-width/2 + 20,width/2 - 20);
-  pos.rect_y = constrain(pos.rect_y,-height/2 + 20,height/2 - 20 );
-
+  translate(width * 0.5,height * 0.5);
+//Settings for the rectangles
   rectMode(RADIUS);
   strokeWeight(5);
 
+//drawing the rectangles
     push();
     fill(0);
     stroke(255);
@@ -41,7 +39,6 @@ function draw() {
     pop();
 
     // updating position
-
     pos.rect_x += floor(random(-max_rect_mvt, max_rect_mvt));
     pos.rect_y += floor(random(-max_rect_mvt, max_rect_mvt));
 
@@ -52,7 +49,8 @@ function draw() {
     if(pos.rect_y < -height) {
       pos.rect_y = 0;
     }
-
     map(pos.rect_x,-width -80 ,width + 80,-width + rect_width, width - rect_width);
     map(pos.rect_y,-height -80,height + 80, 0, height - rect_width);
+    pos.rect_x = constrain(pos.rect_x,-width/2 + 20,width/2 - 20);
+    pos.rect_y = constrain(pos.rect_y,-height/2 + 20,height/2 - 20 );
 }
