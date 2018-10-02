@@ -1,8 +1,8 @@
-var rect = {};
-rect.rect_x;
-rect.rect_y;
-rect.rect_width = 20;
-rect.max_rect_mvt = 20;
+var pos = {};
+pos.rect_x = 0;
+pos.rect_y = 0;
+var rect_width = 20;
+var max_rect_mvt = 20;
 
 function setup() {
     createCanvas( windowWidth, windowHeight );
@@ -16,43 +16,59 @@ function setup() {
     // rect(-width,-height,width * 2,height);
     pop();
 
-    rect.rect_x = 0;
-    rect.rect_y = 0;
 
-    frameRate(30);
+
+
+
+    frameRate(24);
 }
 
 function draw() {
   translate(width/2,height/2);
 
+  pos.rect_x = constrain(pos.rect_x,-width/2 + 20,width/2 - 20);
+  pos.rect_y = constrain(pos.rect_y,-height/2 + 20,height/2 - 20 );
+
   rectMode(RADIUS);
   strokeWeight(5);
     // noStroke();
-    // ellipse(rect_x, rect_y, rect_width, rect_width);
+    // ellipse(pos.rect_x, pos.rect_y, rect_width, rect_width);
 
 
     push();
     fill(0);
     stroke(255);
-    rect(rect.rect_x,rect.rect_y,rect.rect_width,rect.rect_width,10);
+    rect(pos.rect_x,pos.rect_y,rect_width,rect_width,10);
     pop();
 
     push();
     fill(255);
     stroke(0);
-    rect(-rect.rect_x,-rect.rect_y,rect.rect_width,rect.rect_width,10);
+    rect(-pos.rect_x,-pos.rect_y,rect_width,rect_width,10);
     pop();
 
     // updating position
-    // if(-width/2 + 80 < rect.rect_x < width/2 - 80 ){
-    rect.rect_x += random(-rect.max_rect_mvt, rect.max_rect_mvt);
-    // }
 
-    rect.rect_y += random(-rect.max_rect_mvt, rect.max_rect_mvt);
+    pos.rect_x += floor(random(-max_rect_mvt, max_rect_mvt));
 
-    // if (rect_X < 1) {
-    //   rect_X = rect_X * -1;
+
+    pos.rect_y += floor(random(-max_rect_mvt, max_rect_mvt));
+
+    if(pos.rect_x < -width){
+      pos.rect_x = 0;
+    }
+    if(pos.rect_y < -height) {
+      pos.rect_y = 0;
+    }
+
+    // push();
+    // fill(255, 30, 40);
+    // text(pos.rect_x, 20, 20);
+    // pop();
+
+    // if (pos.rect_x < 1) {
+    //   pos.rect_x = pos.rect_x * -1;
     // }
-    //map(rect_x,-width -100 ,width + 100,-width + rect_width, width - rect_width);
-    //map(rect_y,-height -100,height + 100, 0, height - rect_width);
+    map(pos.rect_x,-width -80 ,width + 80,-width + rect_width, width - rect_width);
+    map(pos.rect_y,-height -80,height + 80, 0, height - rect_width);
 }
