@@ -12,6 +12,8 @@ tri.point2Y = 0;
 tri.point3X = 0;
 tri.point3Y = 0;
 
+var rectSize
+
 var col = {};
 col.R = 0;
 col.B = 0;
@@ -22,7 +24,7 @@ col.A = 0;
 function setup(){
   createCanvas(windowWidth,windowHeight);
   // translate(width/2,height/2);
-  background('rgb(161, 238, 238)');
+  // background('rgb(161, 238, 238)');
   frameRate(1);
 }
 
@@ -46,4 +48,5 @@ col.A = floor(random());
 fill(col.R,col.G,col.B);
 // fill('')
 triangle(tri.point1X,tri.point1Y,tri.point2X,tri.point2Y,tri.point3X,tri.point3Y);
+// rect(tri.point3X,tri.point3Y, tri.point1X, tri.point1Y);
 }
