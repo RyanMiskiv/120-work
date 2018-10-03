@@ -1,5 +1,5 @@
-# Empty p5 sketch.
+Ryan Miskiv
 
-Please replace contents of this file with appropriate readme information after finishing your p5 sketch.
+["Algorithmic" Sketch](https://ryanmiskiv.github.io/120-work/hw-6/)
 
-Current p5 version -> 0.7.1
+# Homework 5 Response
