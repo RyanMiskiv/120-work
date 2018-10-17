@@ -15,7 +15,7 @@ function setup(){
 
 function draw(){
   strokeWeight(3);
-  let density = map(mouseY,0,height, 20,70);
+  let density = map(mouseY,0,height, 20,200);
   spacing = map(mouseX,0,width,15,30);
   //default color set
   if(mouseIsPressed == false){
