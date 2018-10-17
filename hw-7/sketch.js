@@ -65,6 +65,10 @@ function draw() {
       background(0);
       ball.x = 10;
       ball.y = 10;
+      ball.delta_x = 1;
+      ball.delta_y = 1;
+      ball.scale_x = 2;
+      ball.scale_y = 2;
 
     }
 
