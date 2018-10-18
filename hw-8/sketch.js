@@ -33,7 +33,7 @@ function draw(){
     }
 
     //drawing the actual lines
-    for(let i = 0;i<=height - vertiSpacing + 50; i+=horizSpacing){
+    for(let i = 0;i<=height - vertiSpacing + 100; i+=horizSpacing){
       line(0,i,width/2,i + vertiSpacing);
       line(width,i,width/2, i + vertiSpacing);
     }
