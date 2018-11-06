@@ -3,16 +3,21 @@ Ryan Miskiv
 Creative Coding 1
 Week 11
 */
-
+let initial;
 function setup(){
 
   createCanvas(windowWidth,windowHeight);
-
+    background(0);
+ initial = new Caterpillar(width/2,height/2);
 }
 
 function draw(){
-  background(255);
-  new Caterpillar(0,0);
+
+//there's an issue with instantiating the object itself.... figure that shit out
+  initial.display();
+  move();
+  initial.edgeCheck();
+
 }
 
 function mousePressed(){
@@ -47,17 +52,17 @@ class Caterpillar{
   this.segments = [];
   //fill the array with the individual circle segment objects
   for(i=0;i<numOfSegs;i++){
-    this.segments.push(new Circle(this.posX,this.posY, 10));
+    this.segments.push(new Circle(this.posX,this.posY, 50));
     }
 
   }
 
   display(){
     push();
-    fill('green');
+    fill('rgb(14, 255, 1)');
     noStroke();
     for(i=0;i<this.numOfSegs;i++){
-      ellipse(segments[i].posX(),segments[i].posY(),segments[i].width(),segments[i].width());
+      ellipse(this.segments[i].posX(),this.segments[i].posY(),this.segments[i].width());
     }
     pop();
   }
