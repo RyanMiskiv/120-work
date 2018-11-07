@@ -3,20 +3,19 @@ Ryan Miskiv
 Creative Coding 1
 Week 11
 */
-let initial;
+var initial;
 function setup(){
 
   createCanvas(windowWidth,windowHeight);
-    background(0);
- initial = new Caterpillar(width/2,height/2);
+  frameRate(60);
+  background(0);
+ // initial = new Caterpillar(width/2,height/2);
+ initial = new Caterpillar(width/4,height/4,8,'rgb(14, 255, 1)');
 }
 
 function draw(){
-
-//there's an issue with instantiating the object itself.... figure that shit out
-  initial.display();
-  move();
-  initial.edgeCheck();
+    background(0);
+    initial.frame();
 
 }
 
@@ -24,61 +23,84 @@ function mousePressed(){
   new Caterpillar(mouseX,mouseY);
 }
 class Circle{
-  constructor(x,y,width){
+  constructor(x,y,width,deltaX,deltaY){
     this.x = x;
     this.y = y;
     this.width = width;
     this.color = color;
+    this.deltaX = deltaX;
+    this.deltaY = deltaY;
   }
-  posX(){
-    return this.x;
-  }
-  posY(){
-    return this.y;
-  }
-  width(){
-    return this.width;
-  }
+
 
 }
 
 class Caterpillar{
-  constructor(x,y){
+  constructor(x,y,numOfSegs,color){
   this.posX = x;
   this.posY = y;
-  this.deltaX = 1;
-  this.deltaY = 1;
-  this.numOfSegs = 8;
+  this.color = color;
+  this.deltaX = 5;
+  this.deltaY = 5;
+  this.numOfSegs = numOfSegs;
   this.segments = [];
+  this.select = 0;
+  this.separation = 40;
   //fill the array with the individual circle segment objects
-  for(i=0;i<numOfSegs;i++){
-    this.segments.push(new Circle(this.posX,this.posY, 50));
+  for(let i=0;i<this.numOfSegs;i++){
+    this.segments.push(new Circle(this.posX - this.separation,this.posY - this.separation, 50 ,this.deltaX,this.deltaY));
+    this.separation += 20;
     }
 
   }
 
   display(){
     push();
-    fill('rgb(14, 255, 1)');
+    fill(this.color);
     noStroke();
-    for(i=0;i<this.numOfSegs;i++){
-      ellipse(this.segments[i].posX(),this.segments[i].posY(),this.segments[i].width());
+    // translate(this.posX,this.posY);
+    for(let i=0;i<this.numOfSegs;i++){
+      ellipse(this.segments[i].x,this.segments[i].y,this.segments[i].width);
     }
     pop();
   }
 //TODO: Figure out how to make these parts move in a delayed fashion
   move(){
 
+    this.segments[this.select].x += this.segments[this.select].deltaX;
+    this.segments[this.select].y += this.segments[this.select].deltaY;
   }
 
-  edgeCheck(){
+
+  edgeCheck() {
         // check if the ball has hit a vertical wall (left or right walls)
-        if (this.posX + this.rad >= width || this.posX - this.rad <= 0) {
-            this.deltaX *= -1;
+        if (this.segments[this.select].x + (this.segments[this.select].width /2) >= width || this.segments[this.select].x - (this.segments[this.select].width /2) <= 0) {
+            this.segments[this.select].deltaX *= -1;
         }
         // check if the ball has hit a horizontal wall (top or bottom walls)
-        if (this.posY + this.rad >= height || this.posY - this.rad <= 0) {
-            this.deltaY *= -1;
+        if (this.segments[this.select].y + (this.segments[this.select].width /2) >= height || this.segments[this.select].y - (this.segments[this.select].width /2) <= 0) {
+            this.segments[this.select].deltaY *= -1;
         }
-      }
+    }
+  // frame(){
+  //   this.display();
+  //   this.move();
+  //   this.select++;
+  //   if(this.select == numOfSegs){
+  //     this.select = 0;
+  //   }
+  //   this.edgeCheck();
+  // }
+  frame(){
+    for(let i = 0;i<this.numOfSegs;i++){
+      this.display();
+      this.move();
+      this.edgeCheck();
+      this.select++;
+    }
+    this.select = 0;
+
+  }
+
+
 }
