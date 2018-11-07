@@ -15,7 +15,7 @@ function setup(){
   createCanvas(windowWidth,windowHeight);
   background('rgb(114, 230, 233)');
 
- for(let i = 0;i<max;i++){
+ for(let i = 0; i < max; i++){
 
    caterpillars.push(new Caterpillar(width/2, height/2, random(5,10), color(random(255) , random(255), random(255)), random(-5,5), random(-5,5)));
  }
@@ -25,7 +25,7 @@ function draw(){
 
     background('rgb(114, 230, 233)');
     // initial.frame();
-    for(let i = 0; i<max;i++){
+    for(let i = 0; i < max; i++){
       caterpillars[i].frame();
     }
 
@@ -62,7 +62,7 @@ class Caterpillar{
   this.separationY = this.deltaY * 4;
 
   //fill the array with the individual circle segment objects
-  for(let i=0;i<this.numOfSegs;i++){
+  for(let i = 0; i < this.numOfSegs; i++){
     this.segments.push(new Circle(this.posX - this.separationX,this.posY - this.separationY, 40 ,this.deltaX,this.deltaY));
     this.separationX += this.deltaX * 4;
     this.separationY += this.deltaY * 4;
@@ -78,7 +78,7 @@ class Caterpillar{
     fill(this.color);
     noStroke();
 
-    for(let i=0;i<this.numOfSegs;i++){
+    for(let i = 0; i < this.numOfSegs; i++){
       ellipse(this.segments[i].x,this.segments[i].y,this.segments[i].width);
     }
     pop();
@@ -106,7 +106,7 @@ class Caterpillar{
     }
 //Take everything and apply it to each individual segment. Everything occurs in a single frame
   frame(){
-    for(let i = 0;i<this.numOfSegs;i++){
+    for(let i = 0; i < this.numOfSegs; i++){
       this.display();
       this.move();
       this.edgeCheck();
