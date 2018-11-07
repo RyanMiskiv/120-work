@@ -104,7 +104,7 @@ class Caterpillar{
             this.segments[this.select].deltaY *= -1;
         }
     }
-//Take everything and apply it to each individual segment. Everything occurs in a single frame
+//take everything and apply it to each individual segment. Everything occurs in a single frame
   frame(){
     for(let i = 0; i < this.numOfSegs; i++){
       this.display();
