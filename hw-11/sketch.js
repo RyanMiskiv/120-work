@@ -9,7 +9,6 @@ let caterpillars = [];
 let max = 25;
 
 
-//TODO: Make this able to make a ton of Caterpillar of various colors, sizes, and directions
 function setup(){
 
   createCanvas(windowWidth,windowHeight);
