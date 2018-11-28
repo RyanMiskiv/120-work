@@ -1,4 +1,5 @@
 class smile{
+
   constructor(x,y,width,deltaX,deltaY){
     //main variables assigned from input
     this.posX = x;
