@@ -5,22 +5,27 @@ let vidTwo;
 let vidThree;
 let vidFour;
 
-function preload(){
-
-}
+// function preload(){
+//   vidOne = createVideo(flextape.mp4);
+// }
 function setup(){
 
   createCanvas(windowWidth, windowHeight);
   background('white');
   mainTV = new tv(windowWidth/2, windowHeight/2, 800, 570);
-  frameRate(1);
+  // frameRate(1);
+  vidOne = createVideo('flextape.mp4');
+  vidOne.hide();
+  vidOne.size(10,10);
 }
 
 function draw(){
 
   background('white');
   mainTV.display();
-  mainTV.rotateDial();
+  // mainTV.rotateDial();
+  image(vidOne, 50,50);
+  // vidOne.loop();
 }
 
 class tv{
