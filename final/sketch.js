@@ -6,20 +6,21 @@ let vidThree;
 let vidFour;
 
 function preload(){
-  
+
 }
 function setup(){
 
   createCanvas(windowWidth, windowHeight);
   background('white');
   mainTV = new tv(windowWidth/2, windowHeight/2, 800, 570);
-
+  frameRate(1);
 }
 
 function draw(){
 
   background('white');
   mainTV.display();
+  mainTV.rotateDial();
 }
 
 class tv{
@@ -60,6 +61,13 @@ pop();
 this.dial.displayDial();
 
   }
+  rotateDial(){
+    for(let i = 0; i < 45; i++){
+    translate(this.x, this.y);
+    rotate(degrees(1));
+    this.dial.displayDial();
+  }
+  }
 
 
 }
@@ -83,6 +91,6 @@ class dial{
       line(this.x, this.y, this.x, this.y - this.width/2);
     pop();
 
-
   }
+
 }
