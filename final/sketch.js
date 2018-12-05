@@ -1,6 +1,13 @@
 let mainTV;
 let mainDial;
+let vidOne;
+let vidTwo;
+let vidThree;
+let vidFour;
 
+function preload(){
+  
+}
 function setup(){
 
   createCanvas(windowWidth, windowHeight);
@@ -56,7 +63,7 @@ this.dial.displayDial();
 
 
 }
-
+//TODO: Get rotating
 class dial{
   constructor(x,y,width){
     this.x = x;
