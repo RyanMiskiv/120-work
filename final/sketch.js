@@ -4,6 +4,7 @@ let vidOne;
 let vidTwo;
 let vidThree;
 let vidFour;
+let r = 0;
 
 // function preload(){
 //   vidOne = createVideo(flextape.mp4);
@@ -17,6 +18,7 @@ function setup(){
   vidOne = createVideo('flextape.mp4');
   vidOne.hide();
   vidOne.size(10,10);
+  angleMode(DEGREES);
 }
 
 function draw(){
@@ -24,8 +26,14 @@ function draw(){
   background('white');
   mainTV.display();
   // mainTV.rotateDial();
-  image(vidOne, 50,50);
+  // image(vidOne, 50,50);
   // vidOne.loop();
+  push();
+  translate(mainTV.dial.x, mainTV.dial.y);
+  rotate(r);
+  mainTV.dial.displayDial();
+  pop();
+  r++;
 }
 
 class tv{
@@ -67,11 +75,15 @@ this.dial.displayDial();
 
   }
   rotateDial(){
+    // push();
     for(let i = 0; i < 45; i++){
-    translate(this.x, this.y);
-    rotate(degrees(1));
+    push();
+    // translate(this.dial.x, this.dial.y);
+    rotate(degrees(i));
     this.dial.displayDial();
-  }
+    pop();
+    // pop();
+    }
   }
 
 
@@ -86,14 +98,16 @@ class dial{
   }
   displayDial(){
     push();
+    translate(this.x, this.y);
       fill('rgb(185, 185, 185)');
-      ellipse(this.x,this.y,this.width);
+      ellipse(0,0,this.width);
     pop();
 
     push();
+      translate(this.x, this.y);
       fill('black');
       strokeWeight(5);
-      line(this.x, this.y, this.x, this.y - this.width/2);
+      line(0,0, 0, 0 - this.width/2);
     pop();
 
   }
