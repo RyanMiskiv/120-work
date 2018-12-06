@@ -71,7 +71,7 @@ push();
     rect(this.centerX - 110, this.centerY, 500, 520, 75);
   pop();
 pop();
-this.dial.displayDial();
+// this.dial.displayDial();
 
   }
   rotateDial(){
@@ -98,13 +98,13 @@ class dial{
   }
   displayDial(){
     push();
-    translate(this.x, this.y);
+    // translate(this.x, this.y);
       fill('rgb(185, 185, 185)');
       ellipse(0,0,this.width);
     pop();
 
     push();
-      translate(this.x, this.y);
+      // translate(this.x, this.y);
       fill('black');
       strokeWeight(5);
       line(0,0, 0, 0 - this.width/2);
