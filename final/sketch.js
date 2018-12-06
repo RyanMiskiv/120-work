@@ -1,41 +1,65 @@
 let mainTV;
-let mainDial;
 let vidOne;
 let vidTwo;
 let vidThree;
 let vidFour;
 let r = 0;
+let clickCount = 0;
+let d;
 
-// function preload(){
-//   vidOne = createVideo(flextape.mp4);
-// }
+function preload(){
+  vidOne = createVideo('flextape.mp4');
+}
+
 function setup(){
 
   createCanvas(windowWidth, windowHeight);
+
   background('white');
-  mainTV = new tv(windowWidth/2, windowHeight/2, 800, 570);
-  // frameRate(1);
-  vidOne = createVideo('flextape.mp4');
-  vidOne.hide();
-  vidOne.size(10,10);
   angleMode(DEGREES);
+
+  mainTV = new tv(windowWidth/2, windowHeight/2, 800, 570);
+
+  // frameRate(1);
+  // vidOne = createVideo('flextape.mp4');
+  vidOne.hide();
+
+
 }
 
 function draw(){
-
   background('white');
+  d = dist(mainTV.dial.x, mainTV.dial.y, mouseX, mouseY);
+  vidOne.size(500,200);
   mainTV.display();
-  // mainTV.rotateDial();
-  // image(vidOne, 50,50);
+  mainTV.dial.displayDial();
+
+
+  // image(vidOne, mainTV.centerX - 300, mainTV.centerY - 250);
   // vidOne.loop();
+
+//WORKING ROTATE CODE
+push();
+translate(mainTV.dial.x, mainTV.dial.y);
+rotate(45);
+mainTV.dial.displayDial();
+pop();
+  // r++;
+
+}
+function mousePressed(){
+  if(d < mainTV.dial.r){
+
   push();
   translate(mainTV.dial.x, mainTV.dial.y);
-  rotate(r);
+  rotate(45);
   mainTV.dial.displayDial();
   pop();
-  r++;
+  console.log('is working?');
 }
+  }
 
+//Creating the physical TV itself
 class tv{
 
   constructor(centerX,centerY,width,height){
@@ -75,36 +99,34 @@ pop();
 
   }
   rotateDial(){
-    // push();
-    for(let i = 0; i < 45; i++){
     push();
-    // translate(this.dial.x, this.dial.y);
-    rotate(degrees(i));
+    translate(this.dial.x, this.dial.y);
+    rotate(45);
     this.dial.displayDial();
     pop();
-    // pop();
     }
-  }
-
 
 }
-//TODO: Get rotating
+
+
+//Dial as a seperate object created as part of the intialization of the TV, but with its own functionality. Easier to interact with it
 class dial{
   constructor(x,y,width){
     this.x = x;
     this.y = y;
     this.width = width;
     this.rotation = 0;
+    this.r = width/2;
   }
   displayDial(){
     push();
-    // translate(this.x, this.y);
+    translate(this.x, this.y);
       fill('rgb(185, 185, 185)');
       ellipse(0,0,this.width);
     pop();
 
     push();
-      // translate(this.x, this.y);
+      translate(this.x, this.y);
       fill('black');
       strokeWeight(5);
       line(0,0, 0, 0 - this.width/2);
