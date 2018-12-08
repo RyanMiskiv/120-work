@@ -41,10 +41,6 @@ function mousePressed(){
   if(d < mainRadio.dial.r){
     effect.play();
     mainRadio.dial.rotation = (mainRadio.dial.rotation + 90) % 360 ;
-  //
-    // if(mainRadio.dial.rotation == 360){
-    //   mainRadio.dial.rotation = 0;
-    // }
 
     if(mainRadio.dial.rotation == 90){
       songFour.pause();
@@ -89,7 +85,7 @@ push();
   pop();
 //outline bit
   push();
-    fill('rgb(182, 174, 174)');
+    fill('rgb(117, 82, 45)');
     rect(this.centerX, this.centerY, this.width - 50, this.height - 30);
   pop();
 //side panel
