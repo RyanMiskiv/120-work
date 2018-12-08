@@ -13,6 +13,7 @@ function preload(){
   songOne = loadSound('Lifetime Achievement Award.mp3');
   songTwo = loadSound('Tactile Sensation.mp3');
   songThree = loadSound('Homeless in Heathrow.mp3');
+  songFour = loadSound('Tell Me.mp3')
 }
 
 function setup(){
@@ -46,6 +47,7 @@ function mousePressed(){
     // }
 
     if(mainRadio.dial.rotation == 90){
+      songFour.pause();
       songOne.play();
     }
     if(mainRadio.dial.rotation == 180){
@@ -95,21 +97,31 @@ push();
     fill('black');
     rect(this.centerX + 260, this.centerY, 200, 500);
   pop();
-//screen
-  // push();
-  //   fill('rgb(198, 195, 192)');
-  //   rect(this.centerX - 110, this.centerY, 500, 520, 75);
-  // pop();
+
 //speaker
   push();
     fill('rgb(94, 94, 94)');
     ellipse(this.centerX - 110, this.centerY, 500);
 pop();
 
+//Speaker detail
 push();
-  fill('black');
+  fill('rgba(0, 0, 0, 0.84)');
   strokeWeight(15);
-  line(this.centerX - 110, this.centerY + 250, this.centerX - 110, this.centerY - 250);
+  //Horizontal Lines
+  rect(this.centerX - 110, this.centerY, 30, 500, 30);
+  rect(this.centerX - 200, this.centerY, 30, 460, 30);
+  rect(this.centerX - 290, this.centerY, 30, 325, 30);
+  rect(this.centerX - 20, this.centerY, 30, 460, 30);
+  rect(this.centerX + 70, this.centerY, 30, 325, 30);
+
+  //Vertial Lines
+  rect(this.centerX - 110, this.centerY, 500, 30, 30);
+  rect(this.centerX - 110, this.centerY + 90, 460, 30, 30);
+  rect(this.centerX - 110, this.centerY + 180, 325, 30, 30);
+  rect(this.centerX - 110, this.centerY - 90, 460, 30, 30);
+  rect(this.centerX - 110, this.centerY - 180, 325, 30, 30);
+
 pop();
 this.dial.displayDial();
 pop();
