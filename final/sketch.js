@@ -35,6 +35,27 @@ function draw(){
   mainRadio.display();
   mainRadio.dial.displayDial();
 
+  if(frameCount == 1){
+    songFour.play();
+  }
+
+  if(mainRadio.on == false){
+    songOne.setVolume(0);
+    songTwo.setVolume(0);
+    songThree.setVolume(0);
+    songFour.setVolume(0);
+    effect.setVolume(0);
+  }
+  else{
+    songOne.setVolume(1.0);
+    songTwo.setVolume(1.0);
+    songThree.setVolume(1.0);
+    songFour.setVolume(1.0);
+    effect.setVolume(1.0);
+  }
+
+  // console.log(frameCount)
+
 }
 function mousePressed(){
   //rotates the dial on press
@@ -60,6 +81,10 @@ function mousePressed(){
     }
     console.log(mainRadio.dial.rotation);
 }
+  if(mouseX < mainRadio.centerX + 310 && mouseX > mainRadio.centerX + 210
+    && mouseY < mainRadio.centerY + 215 && mouseY > mainRadio.centerY + 185){
+      mainRadio.on = !mainRadio.on;
+    }
   }
 
 //Creating the physical radio itself
@@ -73,6 +98,7 @@ class radio{
     this.color = color(117, 47, 21);
     this.dial = new dial(this.centerX + 260, this.centerY - 150, 130);
     this.rotation = 0;
+    this.on = false;
   }
   display(){
 push();
@@ -81,12 +107,12 @@ push();
 //main body
   push();
     fill(this.color);
-    rect(this.centerX, this.centerY, this.width, this.height);
+    rect(this.centerX, this.centerY, this.width, this.height, 20);
   pop();
 //outline bit
   push();
     fill('rgb(117, 82, 45)');
-    rect(this.centerX, this.centerY, this.width - 50, this.height - 30);
+    rect(this.centerX, this.centerY, this.width - 50, this.height - 30, 10);
   pop();
 //side panel
   push();
@@ -119,8 +145,26 @@ push();
   rect(this.centerX - 110, this.centerY - 180, 325, 30, 30);
 
 pop();
-this.dial.displayDial();
+//On button
+push();
+
+fill('rgb(129, 129, 129)');
+rect(this.centerX + 260 ,this.centerY + 200, 100, 30, 10);
 pop();
+
+push();
+fill('rgb(106, 15, 15)');
+if(this.on == false){
+  rect(this.centerX + 235, this.centerY + 200, 50, 27, 15);
+}
+if(this.on == true){
+  rect(this.centerX + 285, this.centerY + 200, 50, 27, 15);
+}
+pop();
+this.dial.displayDial();
+
+pop();
+
   }
   // rotateDial(){
   //   push();
