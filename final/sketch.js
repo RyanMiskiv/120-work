@@ -1,14 +1,18 @@
 let mainRadio;
-let vidOne;
-let vidTwo;
-let vidThree;
-let vidFour;
+let songOne;
+let songTwo;
+let songThree;
+let songFour;
+let effect;
 let r = 0;
 let clickCount = 0;
 let d;
 
 function preload(){
-  vidOne = createVideo('flextape.mp4');
+  effect = loadSound('RadioEffect.wav');
+  songOne = loadSound('Lifetime Achievement Award.mp3');
+  songTwo = loadSound('Tactile Sensation.mp3');
+  songThree = loadSound('Homeless in Heathrow.mp3');
 }
 
 function setup(){
@@ -20,43 +24,43 @@ function setup(){
 
   mainRadio = new radio(windowWidth/2, windowHeight/2, 800, 570);
 
-  // frameRate(1);
-  // vidOne = createVideo('flextape.mp4');
-  vidOne.hide();
-
-
 }
 
 function draw(){
 
   background('white');
   d = dist(mainRadio.dial.x, mainRadio.dial.y, mouseX, mouseY);
-  vidOne.size(500,200);
+  // vidOne.size(500,200);
   mainRadio.display();
   mainRadio.dial.displayDial();
 
-
-  // image(vidOne, mainTV.centerX - 300, mainTV.centerY - 250);
-  // vidOne.loop();
-
-//WORKING ROTATE CODE
-push();
-translate(mainRadio.dial.x, mainRadio.dial.y);
-rotate(45);
-mainRadio.dial.displayDial();
-pop();
-  // r++;
-
 }
 function mousePressed(){
+  //rotates the dial on press
   if(d < mainRadio.dial.r){
+    effect.play();
+    mainRadio.dial.rotation = (mainRadio.dial.rotation + 90) % 360 ;
+  //
+    // if(mainRadio.dial.rotation == 360){
+    //   mainRadio.dial.rotation = 0;
+    // }
 
-  push();
-  translate(mainRadio.dial.x, mainRadio.dial.y);
-  rotate(45);
-  mainRadio.dial.displayDial();
-  pop();
-  console.log('is working?');
+    if(mainRadio.dial.rotation == 90){
+      songOne.play();
+    }
+    if(mainRadio.dial.rotation == 180){
+      songOne.pause();
+      songTwo.play();
+    }
+    if(mainRadio.dial.rotation == 270){
+      songTwo.pause();
+      songThree.play();
+    }
+    if(mainRadio.dial.rotation == 0){
+      songThree.pause();
+      songFour.play();
+    }
+    console.log(mainRadio.dial.rotation);
 }
   }
 
@@ -70,6 +74,7 @@ class radio{
     this.height = height;
     this.color = color(117, 47, 21);
     this.dial = new dial(this.centerX + 260, this.centerY - 150, 130);
+    this.rotation = 0;
   }
   display(){
 push();
@@ -91,22 +96,31 @@ push();
     rect(this.centerX + 260, this.centerY, 200, 500);
   pop();
 //screen
+  // push();
+  //   fill('rgb(198, 195, 192)');
+  //   rect(this.centerX - 110, this.centerY, 500, 520, 75);
+  // pop();
+//speaker
   push();
-    fill('rgb(198, 195, 192)');
-    rect(this.centerX - 110, this.centerY, 500, 520, 75);
-  pop();
-
+    fill('rgb(94, 94, 94)');
+    ellipse(this.centerX - 110, this.centerY, 500);
 pop();
-// this.dial.displayDial();
 
+push();
+  fill('black');
+  strokeWeight(15);
+  line(this.centerX - 110, this.centerY + 250, this.centerX - 110, this.centerY - 250);
+pop();
+this.dial.displayDial();
+pop();
   }
-  rotateDial(){
-    push();
-    translate(this.dial.x, this.dial.y);
-    rotate(45);
-    this.dial.displayDial();
-    pop();
-    }
+  // rotateDial(){
+  //   push();
+  //   translate(this.dial.x, this.dial.y);
+  //   rotate(45);
+  //   this.dial.displayDial();
+  //   pop();
+  //   }
 
 }
 
@@ -120,20 +134,24 @@ class dial{
     this.rotation = 0;
     this.r = width/2;
   }
+
   displayDial(){
+
     push();
     translate(this.x, this.y);
-      fill('rgb(185, 185, 185)');
-      ellipse(0,0,this.width);
-    pop();
+    rotate(this.rotation) ;
+        push();
+          fill('rgb(185, 185, 185)');
+          ellipse(0,0,this.width);
+        pop();
 
-    push();
-      translate(this.x, this.y);
-      fill('black');
-      strokeWeight(5);
-      line(0,0, 0, 0 - this.width/2);
-    pop();
-
+        push();
+          fill('black');
+          strokeWeight(5);
+          line(0,0, 0, 0 - this.width/2);
+          // console.log('?');
+        pop();
+      pop();
   }
 
 }
