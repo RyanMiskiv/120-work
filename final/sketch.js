@@ -1,44 +1,53 @@
+
+//Global Variable needed for the radio
 let mainRadio;
 let songOne;
 let songTwo;
 let songThree;
 let songFour;
 let effect;
-let r = 0;
-let clickCount = 0;
 let d;
+let switchOn;
+let switchOff;
 
+//Load up all the songs
 function preload(){
-  effect = loadSound('RadioEffect.wav');
-  songOne = loadSound('Lifetime Achievement Award.mp3');
-  songTwo = loadSound('Tactile Sensation.mp3');
-  songThree = loadSound('Homeless in Heathrow.mp3');
-  songFour = loadSound('Tell Me.mp3')
+  effect = loadSound('sounds/RadioEffect.wav');
+  switchOn = loadSound('sounds/switchon.wav');
+  switchOff = loadSound('sounds/switchoff.wav');
+  songOne = loadSound('sounds/Lifetime Achievement Award.mp3');
+  songTwo = loadSound('sounds/Tactile Sensation.mp3');
+  songThree = loadSound('sounds/Homeless in Heathrow.mp3');
+  songFour = loadSound('sounds/Tell Me.mp3')
 }
 
 function setup(){
 
   createCanvas(windowWidth, windowHeight);
 
-  background('white');
+  // background('rgb(128, 127, 131)');
   angleMode(DEGREES);
-
+//Create the radio obejct
   mainRadio = new radio(windowWidth/2, windowHeight/2, 800, 570);
 
 }
 
 function draw(){
 
-  background('white');
+  background('rgb(159, 145, 145)');
+//Keep track of where the mouse is in relation to the dial, so we can figure out when it gets clicked
   d = dist(mainRadio.dial.x, mainRadio.dial.y, mouseX, mouseY);
-  // vidOne.size(500,200);
+
+//Draw the radio and the dial
   mainRadio.display();
   mainRadio.dial.displayDial();
 
+//Get things started, whether radio is on or off and sound will be playing when it first gets turned on
   if(frameCount == 1){
     songFour.play();
   }
 
+//On and off functionality
   if(mainRadio.on == false){
     songOne.setVolume(0);
     songTwo.setVolume(0);
@@ -54,38 +63,49 @@ function draw(){
     effect.setVolume(1.0);
   }
 
-  // console.log(frameCount)
-
 }
+
+//TODO: (possibly) change it so the songs are always playing, and the volume is what changes. Will require slight change to the functionality of the on/off button
 function mousePressed(){
   //rotates the dial on press
   if(d < mainRadio.dial.r){
     effect.play();
     mainRadio.dial.rotation = (mainRadio.dial.rotation + 90) % 360 ;
 
+//Lifetime Achievement Award
     if(mainRadio.dial.rotation == 90){
       songFour.pause();
       songOne.play();
     }
+//Tactile Sensation
     if(mainRadio.dial.rotation == 180){
       songOne.pause();
       songTwo.play();
     }
+//Homeless in Heathrow
     if(mainRadio.dial.rotation == 270){
       songTwo.pause();
       songThree.play();
     }
+//Tell me
     if(mainRadio.dial.rotation == 0){
       songThree.pause();
       songFour.play();
     }
-    console.log(mainRadio.dial.rotation);
-}
+  }
+
+//Switching on/off button on click
   if(mouseX < mainRadio.centerX + 310 && mouseX > mainRadio.centerX + 210
     && mouseY < mainRadio.centerY + 215 && mouseY > mainRadio.centerY + 185){
       mainRadio.on = !mainRadio.on;
+      if(mainRadio.on == false){
+        switchOff.play();
+      }
+      else{
+        switchOn.play();
+      }
     }
-  }
+}
 
 //Creating the physical radio itself
 class radio{
@@ -97,9 +117,9 @@ class radio{
     this.height = height;
     this.color = color(117, 47, 21);
     this.dial = new dial(this.centerX + 260, this.centerY - 150, 130);
-    this.rotation = 0;
     this.on = false;
   }
+  //Drawing everything up
   display(){
 push();
     noStroke();
@@ -153,6 +173,13 @@ rect(this.centerX + 260 ,this.centerY + 200, 100, 30, 10);
 pop();
 
 push();
+fill('white');
+textSize(16);
+textAlign(CENTER);
+text('OFF  /  ON', this.centerX + 260, this.centerY + 235);
+pop();
+
+push();
 fill('rgb(106, 15, 15)');
 if(this.on == false){
   rect(this.centerX + 235, this.centerY + 200, 50, 27, 15);
@@ -166,13 +193,6 @@ this.dial.displayDial();
 pop();
 
   }
-  // rotateDial(){
-  //   push();
-  //   translate(this.dial.x, this.dial.y);
-  //   rotate(45);
-  //   this.dial.displayDial();
-  //   pop();
-  //   }
 
 }
 
@@ -201,7 +221,6 @@ class dial{
           fill('black');
           strokeWeight(5);
           line(0,0, 0, 0 - this.width/2);
-          // console.log('?');
         pop();
       pop();
   }
