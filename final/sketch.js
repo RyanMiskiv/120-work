@@ -1,4 +1,4 @@
-let mainTV;
+let mainRadio;
 let vidOne;
 let vidTwo;
 let vidThree;
@@ -18,7 +18,7 @@ function setup(){
   background('white');
   angleMode(DEGREES);
 
-  mainTV = new tv(windowWidth/2, windowHeight/2, 800, 570);
+  mainRadio = new radio(windowWidth/2, windowHeight/2, 800, 570);
 
   // frameRate(1);
   // vidOne = createVideo('flextape.mp4');
@@ -28,11 +28,12 @@ function setup(){
 }
 
 function draw(){
+
   background('white');
-  d = dist(mainTV.dial.x, mainTV.dial.y, mouseX, mouseY);
+  d = dist(mainRadio.dial.x, mainRadio.dial.y, mouseX, mouseY);
   vidOne.size(500,200);
-  mainTV.display();
-  mainTV.dial.displayDial();
+  mainRadio.display();
+  mainRadio.dial.displayDial();
 
 
   // image(vidOne, mainTV.centerX - 300, mainTV.centerY - 250);
@@ -40,27 +41,27 @@ function draw(){
 
 //WORKING ROTATE CODE
 push();
-translate(mainTV.dial.x, mainTV.dial.y);
+translate(mainRadio.dial.x, mainRadio.dial.y);
 rotate(45);
-mainTV.dial.displayDial();
+mainRadio.dial.displayDial();
 pop();
   // r++;
 
 }
 function mousePressed(){
-  if(d < mainTV.dial.r){
+  if(d < mainRadio.dial.r){
 
   push();
-  translate(mainTV.dial.x, mainTV.dial.y);
+  translate(mainRadio.dial.x, mainRadio.dial.y);
   rotate(45);
-  mainTV.dial.displayDial();
+  mainRadio.dial.displayDial();
   pop();
   console.log('is working?');
 }
   }
 
-//Creating the physical TV itself
-class tv{
+//Creating the physical radio itself
+class radio{
 
   constructor(centerX,centerY,width,height){
     this.centerX = centerX;
@@ -94,6 +95,7 @@ push();
     fill('rgb(198, 195, 192)');
     rect(this.centerX - 110, this.centerY, 500, 520, 75);
   pop();
+
 pop();
 // this.dial.displayDial();
 
