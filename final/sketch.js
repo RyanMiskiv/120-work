@@ -25,11 +25,14 @@ function setup(){
 
   createCanvas(windowWidth, windowHeight);
   angleMode(DEGREES);
-  
+
 //Create the radio obejct
   mainRadio = new radio(windowWidth/2, windowHeight/2, 800, 570);
   switchOn.setVolume(0.5);
   switchOff.setVolume(0.5);
+
+      songFour.play();
+
 }
 
 function draw(){
@@ -44,7 +47,7 @@ function draw(){
 
 //Get things started, whether radio is on or off and sound will be playing when it first gets turned on
   if(frameCount == 1){
-    songFour.play();
+    // songFour.play();
   }
 
 //On and off functionality
@@ -118,6 +121,7 @@ class radio{
     this.color = color(117, 47, 21);
     this.dial = new dial(this.centerX + 260, this.centerY - 150, 130);
     this.on = false;
+
   }
   //Drawing everything up
   display(){
