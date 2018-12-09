@@ -10,7 +10,7 @@ let d;
 let switchOn;
 let switchOff;
 
-//Load up all the songs
+//Load up all the songs/sound effects
 function preload(){
   effect = loadSound('sounds/RadioEffect.wav');
   switchOn = loadSound('sounds/switchon.wav');
@@ -24,32 +24,36 @@ function preload(){
 function setup(){
 
   createCanvas(windowWidth, windowHeight);
+
   angleMode(DEGREES);
-  frameRate(15);
 //Create the radio obejct
   mainRadio = new radio(windowWidth/2, windowHeight/2, 800, 570);
+
+//Initially set the volumes of these. They won't be affected or updated but they were slightly too loud
   switchOn.setVolume(0.5);
   switchOff.setVolume(0.5);
 
-  songOne.play();
-  songTwo.play();
-  songThree.play();
-  songFour.play();
+//Start all the songs at the same time
+  songOne.loop();
+  songTwo.loop();
+  songThree.loop();
+  songFour.loop();
 
 }
 
 function draw(){
 
   background('rgb(159, 145, 145)');
+
 //Keep track of where the mouse is in relation to the dial, so we can figure out when it gets clicked
   d = dist(mainRadio.dial.x, mainRadio.dial.y, mouseX, mouseY);
 
-//Draw the radio and the dial
+//Draw the radio and the dial from the object classes
   mainRadio.display();
   mainRadio.dial.displayDial();
 
 
-//On and off functionality
+//Volume control based on on/off status & 'station' selection
   if(mainRadio.on == false){
     songOne.setVolume(0);
     songTwo.setVolume(0);
@@ -58,6 +62,7 @@ function draw(){
     effect.setVolume(0);
   }
   else{
+
   //Lifetime Achievement Award
       if(mainRadio.dial.rotation == 90){
         songFour.setVolume(0);
@@ -83,7 +88,6 @@ function draw(){
 
 }
 
-//TODO: (possibly) change it so the songs are always playing, and the volume is what changes. Will require slight change to the functionality of the on/off button
 function mousePressed(){
   //rotates the dial on press
   if(d < mainRadio.dial.r){
@@ -124,16 +128,19 @@ class radio{
   push();
     noStroke();
     rectMode(CENTER);
+
 //main body
   push();
     fill(this.color);
     rect(this.centerX, this.centerY, this.width, this.height, 20);
   pop();
+
 //outline bit
   push();
     fill('rgb(117, 82, 45)');
     rect(this.centerX, this.centerY, this.width - 50, this.height - 30, 10);
   pop();
+
 //side panel
   push();
     fill('black');
@@ -165,13 +172,15 @@ push();
   rect(this.centerX - 110, this.centerY - 180, 325, 30, 30);
 
 pop();
-//On button
+
+//On button bg
 push();
 
 fill('rgb(129, 129, 129)');
 rect(this.centerX + 260 ,this.centerY + 200, 100, 30, 10);
 pop();
 
+//Button Text
 push();
 fill('white');
 textSize(16);
@@ -179,6 +188,7 @@ textAlign(CENTER);
 text('OFF  /  ON', this.centerX + 260, this.centerY + 235);
 pop();
 
+//On button swithc
 push();
 fill('rgb(106, 15, 15)');
 if(this.on == false){
@@ -188,7 +198,6 @@ if(this.on == true){
   rect(this.centerX + 285, this.centerY + 200, 50, 27, 15);
 }
 pop();
-this.dial.displayDial();
 
 pop();
 
