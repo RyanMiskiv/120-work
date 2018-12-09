@@ -29,7 +29,8 @@ function setup(){
   angleMode(DEGREES);
 //Create the radio obejct
   mainRadio = new radio(windowWidth/2, windowHeight/2, 800, 570);
-
+  switchOn.setVolume(0.5);
+  switchOff.setVolume(0.5);
 }
 
 function draw(){
@@ -56,11 +57,11 @@ function draw(){
     effect.setVolume(0);
   }
   else{
-    songOne.setVolume(1.0);
-    songTwo.setVolume(1.0);
-    songThree.setVolume(1.0);
-    songFour.setVolume(1.0);
-    effect.setVolume(1.0);
+    songOne.setVolume(0.25);
+    songTwo.setVolume(0.25);
+    songThree.setVolume(0.25);
+    songFour.setVolume(0.25);
+    effect.setVolume(0.25);
   }
 
 }
@@ -143,7 +144,7 @@ class radio{
 
 //speaker
   push();
-    fill('rgb(94, 94, 94)');
+    fill('rgb(43, 43, 43)');
     ellipse(this.centerX - 110, this.centerY, 500);
 pop();
 
