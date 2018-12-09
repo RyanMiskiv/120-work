@@ -18,15 +18,14 @@ function preload(){
   songOne = loadSound('sounds/Lifetime Achievement Award.mp3');
   songTwo = loadSound('sounds/Tactile Sensation.mp3');
   songThree = loadSound('sounds/Homeless in Heathrow.mp3');
-  songFour = loadSound('sounds/Tell Me.mp3')
+  songFour = loadSound('sounds/Tell Me.mp3');
 }
 
 function setup(){
 
   createCanvas(windowWidth, windowHeight);
-
-  // background('rgb(128, 127, 131)');
   angleMode(DEGREES);
+  
 //Create the radio obejct
   mainRadio = new radio(windowWidth/2, windowHeight/2, 800, 570);
   switchOn.setVolume(0.5);
