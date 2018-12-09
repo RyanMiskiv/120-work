@@ -121,7 +121,8 @@ class radio{
   }
   //Drawing everything up
   display(){
-push();
+
+  push();
     noStroke();
     rectMode(CENTER);
 //main body
