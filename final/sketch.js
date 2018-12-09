@@ -12,13 +12,18 @@ let switchOff;
 
 //Load up all the songs/sound effects
 function preload(){
+
+//Sound Effects
   effect = loadSound('sounds/RadioEffect.wav');
   switchOn = loadSound('sounds/switchon.wav');
   switchOff = loadSound('sounds/switchoff.wav');
+
+//Songs
   songOne = loadSound('sounds/Lifetime Achievement Award.mp3');
   songTwo = loadSound('sounds/Tactile Sensation.mp3');
   songThree = loadSound('sounds/Homeless in Heathrow.mp3');
   songFour = loadSound('sounds/Tell Me.mp3');
+
 }
 
 function setup(){
@@ -188,7 +193,7 @@ textAlign(CENTER);
 text('OFF  /  ON', this.centerX + 260, this.centerY + 235);
 pop();
 
-//On button swithc
+//On button switch
 push();
 fill('rgb(106, 15, 15)');
 if(this.on == false){
@@ -206,7 +211,7 @@ pop();
 }
 
 
-//Dial as a seperate object created as part of the intialization of the TV, but with its own functionality. Easier to interact with it
+//Dial as a seperate object created as part of the intialization of the radio, but with its own functionality. Easier to interact with it
 class dial{
   constructor(x,y,width){
     this.x = x;
