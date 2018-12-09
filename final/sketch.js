@@ -25,13 +25,16 @@ function setup(){
 
   createCanvas(windowWidth, windowHeight);
   angleMode(DEGREES);
-
+  frameRate(15);
 //Create the radio obejct
   mainRadio = new radio(windowWidth/2, windowHeight/2, 800, 570);
   switchOn.setVolume(0.5);
   switchOff.setVolume(0.5);
 
-      songFour.play();
+  songOne.play();
+  songTwo.play();
+  songThree.play();
+  songFour.play();
 
 }
 
@@ -45,10 +48,6 @@ function draw(){
   mainRadio.display();
   mainRadio.dial.displayDial();
 
-//Get things started, whether radio is on or off and sound will be playing when it first gets turned on
-  if(frameCount == 1){
-    // songFour.play();
-  }
 
 //On and off functionality
   if(mainRadio.on == false){
@@ -59,12 +58,28 @@ function draw(){
     effect.setVolume(0);
   }
   else{
-    songOne.setVolume(0.25);
-    songTwo.setVolume(0.25);
-    songThree.setVolume(0.25);
-    songFour.setVolume(0.25);
-    effect.setVolume(0.25);
-  }
+  //Lifetime Achievement Award
+      if(mainRadio.dial.rotation == 90){
+        songFour.setVolume(0);
+        songOne.setVolume(0.5);
+      }
+  //Tactile Sensation
+      if(mainRadio.dial.rotation == 180){
+        songOne.setVolume(0);
+        songTwo.setVolume(0.5);
+      }
+  //Homeless in Heathrow
+      if(mainRadio.dial.rotation == 270){
+        songTwo.setVolume(0);
+        songThree.setVolume(0.25);
+      }
+  //Tell me
+      if(mainRadio.dial.rotation == 0){
+        songThree.setVolume(0);
+        songFour.setVolume(0.25);
+      }
+      effect.setVolume(0.5);
+    }
 
 }
 
@@ -75,26 +90,6 @@ function mousePressed(){
     effect.play();
     mainRadio.dial.rotation = (mainRadio.dial.rotation + 90) % 360 ;
 
-//Lifetime Achievement Award
-    if(mainRadio.dial.rotation == 90){
-      songFour.pause();
-      songOne.play();
-    }
-//Tactile Sensation
-    if(mainRadio.dial.rotation == 180){
-      songOne.pause();
-      songTwo.play();
-    }
-//Homeless in Heathrow
-    if(mainRadio.dial.rotation == 270){
-      songTwo.pause();
-      songThree.play();
-    }
-//Tell me
-    if(mainRadio.dial.rotation == 0){
-      songThree.pause();
-      songFour.play();
-    }
   }
 
 //Switching on/off button on click
