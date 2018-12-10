@@ -203,7 +203,7 @@ if(this.on == true){
   rect(this.centerX + 285, this.centerY + 200, 50, 27, 15);
 }
 pop();
-
+//TODO: Add in an antenna
 pop();
 
   }
