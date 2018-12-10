@@ -134,6 +134,14 @@ class radio{
     noStroke();
     rectMode(CENTER);
 
+//Antenna
+if(this.on == true){
+push();
+fill('black');
+rect(this.centerX + 370, this.centerY - 285, 10, 200);
+ellipse(this.centerX + 370, this.centerY - 385, 15);
+pop();
+}
 //main body
   push();
     fill(this.color);
@@ -203,7 +211,7 @@ if(this.on == true){
   rect(this.centerX + 285, this.centerY + 200, 50, 27, 15);
 }
 pop();
-//TODO: Add in an antenna
+
 pop();
 
   }
